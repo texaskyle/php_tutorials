@@ -9,7 +9,11 @@
     // it is always good to close the file
     fclose($handle);
 
-    echo "written";
+ 
+    ?>
+
+
+<?php
 
     // creating a write file
   if (isset($_POST['submit'])) {
@@ -36,3 +40,20 @@
   name  <input type="text" name="name">
   <input type="submit" name="submit">
 </form>
+
+<?php
+echo "<strong><u>using fread to read the files</strong></u><br>";
+// file name that we want to read the files from
+$filename = 'names2.txt';
+
+$handle = fopen($filename, 'r');
+
+// file that want to read
+ 
+ $datain =fread($handle, filesize($filename));
+ $name_array = explode('. ', $datain );
+ foreach ($name_array as $name) {
+  echo $name;
+ }
+?>
+
